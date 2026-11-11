@@ -1,0 +1,10 @@
+.env
+.env.*
+.near-credentials/
+node_modules/
+target/
+/.*/
+!/.github/
+/skills/
+/data/
+/skills-lock.json

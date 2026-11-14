@@ -8,7 +8,7 @@ it they hold and how much people have recently bought. Flood a stall with cassav
 cheap. Drain a merchant of cash and the shop closes. You are a trader: buy where goods are cheap,
 sell where they are dear, reach 300 coins, and watch the prices react to what you did.
 
-- Demo video: <<< paste your X post link >>>
+- Demo video: https://x.com/AyoAbdulraheem/status/2121731613432422402?a=a2r_Rz5Ns1JadXMwzQk&s=20
 - Live demo: https://oja-near-hackathon.vercel.app/
 
 ## What works

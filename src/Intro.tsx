@@ -2,6 +2,7 @@ export default function Intro({ onStart, resume }: { onStart: () => void; resume
   return (
     <div className="adire flex min-h-screen items-center justify-center p-4">
       <div className="w-full max-w-xl rounded-xl bg-white p-6 shadow-xl">
+        <img src="/logo.svg" alt="Hagle Town logo" className="mb-3 h-20 w-20" />
         <h1 className="text-4xl font-bold tracking-tight text-[#1d2b64]">Hagle Town</h1>
         <p className="mt-1 text-lg font-medium text-[#1b2240]">A market that runs itself.</p>
         <p className="mt-2 text-sm text-slate-700">

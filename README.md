@@ -9,7 +9,7 @@ cheap. Drain a merchant of cash and the shop closes. You are a trader: buy where
 sell where they are dear, reach 300 coins, and watch the prices react to what you did.
 
 - Demo video: <<< paste your X post link >>>
-- Live demo: https://Haggle Town-near-hackathon.vercel.app/
+- Live demo: https://oja-near-hackathon.vercel.app/
 
 ## What works
 

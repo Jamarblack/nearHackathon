@@ -8,3 +8,7 @@ target/
 /skills/
 /data/
 /skills-lock.json
+
+/Near skills/
+*.tsbuildinfo
+dist/

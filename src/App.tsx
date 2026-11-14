@@ -11,10 +11,10 @@ import Intro from "./Intro";
 const COLORS: Record<Good, string> = {
   cassava: "#b7791f", palmNuts: "#c2410c", cotton: "#64748b", garri: "#2f6b3a", palmOil: "#7c3aed",
 };
-const TICKS = 84, MS = 714, GOAL = 300; // 84 ticks x 714 ms = about 60 s = 7 game days
+const TICKS = 84, MS = 714, GOAL = 300; 
 const btn = "rounded bg-[#1d2b64] px-3 py-1.5 text-white focus-visible:outline-2 disabled:opacity-40";
 
-const KEY = "oja-save-v1";
+const KEY = "Hagle Town-save-v1";
 const load = (): World | null => {
   try {
     const s = JSON.parse(localStorage.getItem(KEY) ?? "null");
@@ -106,7 +106,7 @@ export default function App() {
   return (
     <div className="mx-auto max-w-5xl pb-10">
       <header className="adire px-5 py-5 text-white">
-        <h1 className="text-4xl font-bold tracking-tight">Oja</h1>
+        <h1 className="text-4xl font-bold tracking-tight">Hagle Town</h1>
         <p className="mt-1 max-w-prose text-sm text-slate-100">
           A market town where merchants set the prices from what they hold and what people buy. Earn {GOAL} coins to open your own stall.
         </p>
@@ -181,10 +181,19 @@ export default function App() {
           <p className="text-sm text-slate-600">Each trade you make at a stall also moves testnet NEAR between wallets (1 coin = 0.001 NEAR). The town simulation and bot traders stay off-chain.</p>
           <ul className="mt-1 space-y-1 text-sm">
             {txs.length === 0 && <li className="text-slate-500">Trade at a stall to see transactions here.</li>}
-            {txs.map((t) => (
+             {txs.map((t, i) => (
               <li key={t.id}>
                 {t.status === "pending" ? "⏳" : t.status === "done" ? "✅" : "⚠️"} {t.label}{" "}
-                {t.hash && <a className="underline" target="_blank" rel="noreferrer" href={`https://testnet.nearblocks.io/txns/${t.hash}`}>view</a>}
+                  {t.hash && (
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href={`https://testnet.nearblocks.io/txns/${t.hash}`}
+                    className={`ml-1 inline-block rounded border-2 border-[#1d2b64] px-2 py-0.5 text-xs font-bold text-[#1d2b64] hover:bg-[#1d2b64] hover:text-white motion-reduce:animate-none ${i === 0 ? "animate-pulse" : ""}`}
+                  >
+                    View on NEAR ↗
+                  </a>
+                )}
                 {t.error && <span className="text-red-700"> ({t.error})</span>}
               </li>
             ))}

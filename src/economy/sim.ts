@@ -11,7 +11,7 @@ export interface World {
 export const DAILY_GATHER_CAP = 30;
 export const RAW: Good[] = ["cassava", "palmNuts", "cotton"];
 
-let seed = 7; // seeded RNG so every run of fast-forward is reproducible for judges
+let seed = 7;
 export const rnd = () => {
   seed = (seed + 0x6d2b79f5) | 0;
   let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
@@ -77,11 +77,11 @@ export function sell(w: World, mi: number, g: Good): string | null {
   if (w.player.inv[g] < 1) return "You have none to sell.";
   if (m.cash < q.bid) return `${m.name} cannot afford that.`;
   w.player.inv[g] -= 1; w.player.coins += q.bid; m.cash -= q.bid; m.stock[g] += 1;
-  if (m.cash < MIN_CASH) m.open = false; // out of cash: shop closes
+  if (m.cash < MIN_CASH) m.open = false; 
   return null;
 }
 
-// A bot trader: buys where a good is cheapest, sells where it pays most.
+
 export function botTrade(w: World) {
   const g = pick(GOODS);
   const open = w.merchants.map((m, i) => ({ m, i })).filter((x) => x.m.open);
@@ -92,7 +92,7 @@ export function botTrade(w: World) {
   if (!buy(bot, a.i, g)) sell(bot, b.i, g);
 }
 
-// End of a day: town customers buy, farmers deliver, closed shops slowly recover.
+
 export function dayTick(w: World) {
   w.day += 1; w.gathered = 0;
   for (const m of w.merchants) {
@@ -102,11 +102,11 @@ export function dayTick(w: World) {
       if (m.cash >= REOPEN_CASH) m.open = true;
       continue;
     }
-    for (let i = 0; i < 3; i++) { // town customers
+    for (let i = 0; i < 3; i++) { 
       const g = pick(GOODS);
       if (m.stock[g] > 0) { m.cash += quote(m, g).ask; m.stock[g] -= 1; }
     }
-    const g = pick(RAW); // farmers deliver raw goods and get paid
+    const g = pick(RAW); 
     const units = Math.min(4, Math.floor((m.cash * 0.5) / quote(m, g).bid));
     if (units > 0) { m.cash -= units * quote(m, g).bid; m.stock[g] += units; }
     if (m.cash < MIN_CASH) m.open = false;
